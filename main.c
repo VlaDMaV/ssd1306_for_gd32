@@ -152,10 +152,13 @@ void draw_radar(uint32_t frame)
     for (int y = RADAR_CY - 55; y <= RADAR_CY; y += 2)
         OLED_Pixel(RADAR_CX, y);
 
-    /* Expanding ring: radius grows from 0 to RADAR_MAX_R, then resets */
+    /* Expanding ring with glow: draw 5 concentric arcs (r-2..r+2) */
     int ring_r = frame % (RADAR_MAX_R + 1);
-    if (ring_r >= 1)
-        draw_semicircle(RADAR_CX, RADAR_CY, ring_r);
+    for (int d = -2; d <= 2; d++) {
+        int r = ring_r + d;
+        if (r >= 1 && r <= RADAR_MAX_R)
+            draw_semicircle(RADAR_CX, RADAR_CY, r);
+    }
 
     OLED_Update();
 }
