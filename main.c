@@ -9,9 +9,6 @@
 #include "system_gd32f30x.h"
 #include <stdlib.h>
 #include <string.h>
-#include <math.h>
-
-#define PI 3.14159265f
 
 #define OLED_ADDR 0x3C
 
@@ -138,19 +135,6 @@ static void draw_semicircle(int cx, int cy, int r)
     }
 }
 
-/* Draw sweep line from center outward at given angle (radians, 0=up, +PI/2=right) */
-static void draw_sweep(int cx, int cy, float angle, int r)
-{
-    float dx =  sinf(angle);
-    float dy = -cosf(angle);
-    for (int i = 2; i <= r; i++) {
-        int px = cx + (int)(dx * i + 0.5f);
-        int py = cy + (int)(dy * i + 0.5f);
-        if (px >= 0 && px < 128 && py >= 0 && py < 64)
-            OLED_Pixel(px, py);
-    }
-}
-
 void draw_radar(uint32_t frame)
 {
     OLED_ClearBuffer();
@@ -168,28 +152,10 @@ void draw_radar(uint32_t frame)
     for (int y = RADAR_CY - 55; y <= RADAR_CY; y += 2)
         OLED_Pixel(RADAR_CX, y);
 
-    /* Rotating sweep line: full 180° back and forth */
-    /* frame cycles through 180 steps: -90° to +90° */
-    int step = frame % 360;
-    int angle_deg;
-    if (step < 180)
-        angle_deg = step - 90;       /* -90 -> +89 */
-    else
-        angle_deg = 270 - step;      /* +89 -> -90 (reverse) */
-
-    float angle_rad = angle_deg * PI / 180.0f;
-
-    /* Draw a fading trail (3 lines behind sweep) */
-    for (int t = 3; t >= 0; t--) {
-        int trail_deg = angle_deg - t * 5;
-        float trail_rad = trail_deg * PI / 180.0f;
-        int trail_r = RADAR_MAX_R - t * 4;
-        if (trail_r > 0)
-            draw_sweep(RADAR_CX, RADAR_CY, trail_rad, trail_r);
-    }
-
-    /* Main sweep line — full length */
-    draw_sweep(RADAR_CX, RADAR_CY, angle_rad, RADAR_MAX_R);
+    /* Expanding ring: radius grows from 0 to RADAR_MAX_R, then resets */
+    int ring_r = frame % (RADAR_MAX_R + 1);
+    if (ring_r >= 1)
+        draw_semicircle(RADAR_CX, RADAR_CY, ring_r);
 
     OLED_Update();
 }
