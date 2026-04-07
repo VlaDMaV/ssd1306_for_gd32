@@ -1,0 +1,462 @@
+###############################################################################
+#
+# IAR ELF Linker V9.50.1.380/W64 for ARM                  07/Apr/2026  13:24:33
+# Copyright 2007-2023 IAR Systems AB.
+#
+#    Output file  =  D:\Test\Debug\Exe\test.out
+#    Map file     =  D:\Test\Debug\List\test.map
+#    Command line =
+#        -f D:\Test\Debug\Exe\test.out.rsp
+#        (D:\Test\Debug\Obj\DRIVER_5575765168185057779.dir\gd32f30x_adc.o
+#        D:\Test\Debug\Obj\DRIVER_5575765168185057779.dir\gd32f30x_bkp.o
+#        D:\Test\Debug\Obj\DRIVER_5575765168185057779.dir\gd32f30x_can.o
+#        D:\Test\Debug\Obj\DRIVER_5575765168185057779.dir\gd32f30x_crc.o
+#        D:\Test\Debug\Obj\DRIVER_5575765168185057779.dir\gd32f30x_ctc.o
+#        D:\Test\Debug\Obj\DRIVER_5575765168185057779.dir\gd32f30x_dac.o
+#        D:\Test\Debug\Obj\DRIVER_5575765168185057779.dir\gd32f30x_dbg.o
+#        D:\Test\Debug\Obj\DRIVER_5575765168185057779.dir\gd32f30x_dma.o
+#        D:\Test\Debug\Obj\DRIVER_5575765168185057779.dir\gd32f30x_enet.o
+#        D:\Test\Debug\Obj\DRIVER_5575765168185057779.dir\gd32f30x_exmc.o
+#        D:\Test\Debug\Obj\DRIVER_5575765168185057779.dir\gd32f30x_exti.o
+#        D:\Test\Debug\Obj\DRIVER_5575765168185057779.dir\gd32f30x_fmc.o
+#        D:\Test\Debug\Obj\DRIVER_5575765168185057779.dir\gd32f30x_fwdgt.o
+#        D:\Test\Debug\Obj\DRIVER_5575765168185057779.dir\gd32f30x_gpio.o
+#        D:\Test\Debug\Obj\DRIVER_5575765168185057779.dir\gd32f30x_i2c.o
+#        D:\Test\Debug\Obj\DRIVER_5575765168185057779.dir\gd32f30x_misc.o
+#        D:\Test\Debug\Obj\DRIVER_5575765168185057779.dir\gd32f30x_pmu.o
+#        D:\Test\Debug\Obj\DRIVER_5575765168185057779.dir\gd32f30x_rcu.o
+#        D:\Test\Debug\Obj\DRIVER_5575765168185057779.dir\gd32f30x_rtc.o
+#        D:\Test\Debug\Obj\DRIVER_5575765168185057779.dir\gd32f30x_sdio.o
+#        D:\Test\Debug\Obj\DRIVER_5575765168185057779.dir\gd32f30x_spi.o
+#        D:\Test\Debug\Obj\DRIVER_5575765168185057779.dir\gd32f30x_timer.o
+#        D:\Test\Debug\Obj\DRIVER_5575765168185057779.dir\gd32f30x_usart.o
+#        D:\Test\Debug\Obj\DRIVER_5575765168185057779.dir\gd32f30x_wwdgt.o
+#        D:\Test\Debug\Obj\APP_7154173064415748325.dir\main.o
+#        D:\Test\Debug\Obj\APP_7154173064415748325.dir\oled.o
+#        D:\Test\Debug\Obj\APP_7154173064415748325.dir\st7735.o
+#        D:\Test\Debug\Obj\CMSIS_13545061835669826545.dir\startup_gd32f30x_hd.o
+#        D:\Test\Debug\Obj\CMSIS_13545061835669826545.dir\system_gd32f30x.o
+#        --no_out_extension -o D:\Test\Debug\Exe\test.out --redirect
+#        _Printf=_PrintfFullNoMb --redirect _Scanf=_ScanfFullNoMb --map
+#        D:\Test\Debug\List\test.map --config "C:\Program Files\IAR
+#        Systems\Embedded Workbench
+#        9.2\arm/config/linker/GigaDevice/GD32F303xC.icf" --semihosting --entry
+#        __iar_program_start --vfe --text_out locale --cpu=Cortex-M4
+#        --fpu=VFPv4_sp) --dependencies=n D:\Test\Debug\Exe\test.out.iar_deps
+#
+###############################################################################
+
+*******************************************************************************
+*** RUNTIME MODEL ATTRIBUTES
+***
+
+CppFlavor       = *
+__CPP_Runtime   = 1
+__SystemLibrary = DLib
+__dlib_version  = 6
+
+
+*******************************************************************************
+*** HEAP SELECTION
+***
+
+The basic heap was selected because --advanced_heap
+was not specified and the application did not appear to
+be primarily optimized for speed.
+
+
+*******************************************************************************
+*** PLACEMENT SUMMARY
+***
+
+"A0":  place at address 0x800'0000 { ro section .intvec };
+"P1":  place in [from 0x800'0000 to 0x803'ffff] { ro };
+define block CSTACK with size = 1K, alignment = 8 { };
+define block PROC_STACK with size = 0, alignment = 8 { };
+define block HEAP with size = 2K, alignment = 8 { };
+"P2":  place in [from 0x2000'0000 to 0x2000'bfff] {
+          rw, block CSTACK, block PROC_STACK, block HEAP };
+initialize by copy { rw };
+
+  Section            Kind         Address  Aligment   Size  Object
+  -------            ----         -------  --------   ----  ------
+"A0":                                                0x130
+  .intvec            ro code   0x800'0000         4  0x130  startup_gd32f30x_hd.o [2]
+                             - 0x800'0130            0x130
+
+"P1":                                                0xfc0
+  .text              ro code   0x800'0130         4  0x4a4  main.o [1]
+  .text              ro code   0x800'05d4         4  0x14c  gd32f30x_rcu.o [3]
+  .text              ro code   0x800'0720         4   0xde  gd32f30x_gpio.o [3]
+  .text              ro code   0x800'07fe         2   0x2a  copy_init3.o [6]
+  .text              ro code   0x800'0828         4  0x214  gd32f30x_i2c.o [3]
+  .text              ro code   0x800'0a3c         2   0x14  memset.o [6]
+  .text              ro code   0x800'0a50         4   0x22  S32ToDbl.o [5]
+  .text              ro code   0x800'0a74         4  0x1aa  DblMul.o [5]
+  .text              ro code   0x800'0c20         4   0x36  DblToS32.o [5]
+  .text              ro code   0x800'0c58         4  0x14c  system_gd32f30x.o [2]
+  .text              ro code   0x800'0da4         4   0x86  ABImemcpy.o [6]
+  .text              ro code   0x800'0e2c         4   0x66  ABImemset.o [6]
+  .text              ro code   0x800'0e92         2   0x38  zero_init3.o [6]
+  .text              ro code   0x800'0ecc         4   0x2a  data_init.o [6]
+  .text              ro code   0x800'0ef8         4   0x22  fpinit_M.o [5]
+  .iar.init_table    const     0x800'0f1c         4   0x24  - Linker created -
+  .text              ro code   0x800'0f40         4   0x1e  cmain.o [6]
+  .text              ro code   0x800'0f5e         2    0x4  low_level_init.o [4]
+  .text              ro code   0x800'0f62         2    0x4  exit.o [4]
+  .text              ro code   0x800'0f68         4    0xa  cexit.o [6]
+  .text              ro code   0x800'0f74         4   0x14  exit.o [7]
+  .text              ro code   0x800'0f88         4   0x1c  cstartup_M.o [6]
+  .rodata            const     0x800'0fa4         4   0x10  gd32f30x_rcu.o [3]
+  .text              ro code   0x800'0fb4         4   0x10  startup_gd32f30x_hd.o [2]
+  .rodata            const     0x800'0fc4         4    0x8  gd32f30x_rcu.o [3]
+  .rodata            const     0x800'0fcc         4    0x8  gd32f30x_rcu.o [3]
+  .rodata            const     0x800'0fd4         4    0x8  main.o [1]
+  .text              ro code   0x800'0fdc         2    0x4  startup_gd32f30x_hd.o [2]
+  .text              ro code   0x800'0fe0         2    0x4  startup_gd32f30x_hd.o [2]
+  .text              ro code   0x800'0fe4         2    0x4  startup_gd32f30x_hd.o [2]
+  .text              ro code   0x800'0fe8         2    0x4  startup_gd32f30x_hd.o [2]
+  .text              ro code   0x800'0fec         2    0x4  startup_gd32f30x_hd.o [2]
+  .text              ro code   0x800'0ff0         2    0x4  startup_gd32f30x_hd.o [2]
+  .text              ro code   0x800'0ff4         2    0x4  startup_gd32f30x_hd.o [2]
+  .text              ro code   0x800'0ff8         2    0x4  startup_gd32f30x_hd.o [2]
+  .text              ro code   0x800'0ffc         2    0x4  startup_gd32f30x_hd.o [2]
+  .text              ro code   0x800'1000         2    0x4  startup_gd32f30x_hd.o [2]
+  .text              ro code   0x800'1004         2    0x4  startup_gd32f30x_hd.o [2]
+  .text              ro code   0x800'1008         2    0x4  startup_gd32f30x_hd.o [2]
+  .text              ro code   0x800'100c         2    0x4  startup_gd32f30x_hd.o [2]
+  .text              ro code   0x800'1010         2    0x4  startup_gd32f30x_hd.o [2]
+  .text              ro code   0x800'1014         2    0x4  startup_gd32f30x_hd.o [2]
+  .text              ro code   0x800'1018         2    0x4  startup_gd32f30x_hd.o [2]
+  .text              ro code   0x800'101c         2    0x4  startup_gd32f30x_hd.o [2]
+  .text              ro code   0x800'1020         2    0x4  startup_gd32f30x_hd.o [2]
+  .text              ro code   0x800'1024         2    0x4  startup_gd32f30x_hd.o [2]
+  .text              ro code   0x800'1028         2    0x4  startup_gd32f30x_hd.o [2]
+  .text              ro code   0x800'102c         2    0x4  startup_gd32f30x_hd.o [2]
+  .text              ro code   0x800'1030         2    0x4  startup_gd32f30x_hd.o [2]
+  .text              ro code   0x800'1034         2    0x4  startup_gd32f30x_hd.o [2]
+  .text              ro code   0x800'1038         2    0x4  startup_gd32f30x_hd.o [2]
+  .text              ro code   0x800'103c         2    0x4  startup_gd32f30x_hd.o [2]
+  .text              ro code   0x800'1040         2    0x4  startup_gd32f30x_hd.o [2]
+  .text              ro code   0x800'1044         2    0x4  startup_gd32f30x_hd.o [2]
+  .text              ro code   0x800'1048         2    0x4  startup_gd32f30x_hd.o [2]
+  .text              ro code   0x800'104c         2    0x4  startup_gd32f30x_hd.o [2]
+  .text              ro code   0x800'1050         2    0x4  startup_gd32f30x_hd.o [2]
+  .text              ro code   0x800'1054         2    0x4  startup_gd32f30x_hd.o [2]
+  .text              ro code   0x800'1058         2    0x4  startup_gd32f30x_hd.o [2]
+  .text              ro code   0x800'105c         2    0x4  startup_gd32f30x_hd.o [2]
+  .text              ro code   0x800'1060         2    0x4  startup_gd32f30x_hd.o [2]
+  .text              ro code   0x800'1064         2    0x4  startup_gd32f30x_hd.o [2]
+  .text              ro code   0x800'1068         2    0x4  startup_gd32f30x_hd.o [2]
+  .text              ro code   0x800'106c         2    0x4  startup_gd32f30x_hd.o [2]
+  .text              ro code   0x800'1070         2    0x4  startup_gd32f30x_hd.o [2]
+  .text              ro code   0x800'1074         2    0x4  startup_gd32f30x_hd.o [2]
+  .text              ro code   0x800'1078         2    0x4  startup_gd32f30x_hd.o [2]
+  .text              ro code   0x800'107c         2    0x4  startup_gd32f30x_hd.o [2]
+  .text              ro code   0x800'1080         2    0x4  startup_gd32f30x_hd.o [2]
+  .text              ro code   0x800'1084         2    0x4  startup_gd32f30x_hd.o [2]
+  .text              ro code   0x800'1088         2    0x4  startup_gd32f30x_hd.o [2]
+  .text              ro code   0x800'108c         2    0x4  startup_gd32f30x_hd.o [2]
+  .text              ro code   0x800'1090         2    0x4  startup_gd32f30x_hd.o [2]
+  .text              ro code   0x800'1094         2    0x4  startup_gd32f30x_hd.o [2]
+  .text              ro code   0x800'1098         2    0x4  startup_gd32f30x_hd.o [2]
+  .text              ro code   0x800'109c         2    0x4  startup_gd32f30x_hd.o [2]
+  .text              ro code   0x800'10a0         2    0x4  startup_gd32f30x_hd.o [2]
+  .text              ro code   0x800'10a4         2    0x4  startup_gd32f30x_hd.o [2]
+  .text              ro code   0x800'10a8         2    0x4  startup_gd32f30x_hd.o [2]
+  .text              ro code   0x800'10ac         2    0x4  startup_gd32f30x_hd.o [2]
+  .text              ro code   0x800'10b0         2    0x4  startup_gd32f30x_hd.o [2]
+  .text              ro code   0x800'10b4         2    0x4  startup_gd32f30x_hd.o [2]
+  .text              ro code   0x800'10b8         2    0x4  startup_gd32f30x_hd.o [2]
+  .text              ro code   0x800'10bc         2    0x4  startup_gd32f30x_hd.o [2]
+  .text              ro code   0x800'10c0         2    0x4  startup_gd32f30x_hd.o [2]
+  .text              ro code   0x800'10c4         2    0x4  startup_gd32f30x_hd.o [2]
+  .text              ro code   0x800'10c8         2    0x4  startup_gd32f30x_hd.o [2]
+  .text              ro code   0x800'10cc         2    0x4  startup_gd32f30x_hd.o [2]
+  .text              ro code   0x800'10d0         2    0x4  startup_gd32f30x_hd.o [2]
+  .text              ro code   0x800'10d4         2    0x4  startup_gd32f30x_hd.o [2]
+  .text              ro code   0x800'10d8         2    0x4  startup_gd32f30x_hd.o [2]
+  .text              ro code   0x800'10dc         2    0x4  startup_gd32f30x_hd.o [2]
+  .text              ro code   0x800'10e0         2    0x4  startup_gd32f30x_hd.o [2]
+  .text              ro code   0x800'10e4         2    0x4  startup_gd32f30x_hd.o [2]
+  .text              ro code   0x800'10e8         2    0x4  startup_gd32f30x_hd.o [2]
+  Initializer bytes  const     0x800'10ec         4    0x4  <for P2-1>
+  .rodata            const     0x800'10f0              0x0  zero_init3.o [6]
+  .rodata            const     0x800'10f0              0x0  copy_init3.o [6]
+                             - 0x800'10f0            0xfc0
+
+"P2", part 1 of 3:                                     0x4
+  P2-1                        0x2000'0000         4    0x4  <Init block>
+    .data            inited   0x2000'0000         4    0x4  system_gd32f30x.o [2]
+                            - 0x2000'0004              0x4
+
+"P2", part 2 of 3:                                   0x404
+  .bss               zero     0x2000'0004         4  0x400  main.o [1]
+  .bss               zero     0x2000'0404         4    0x4  main.o [1]
+                            - 0x2000'0408            0x404
+
+"P2", part 3 of 3:                                   0x400
+  CSTACK                      0x2000'0408         8  0x400  <Block>
+    CSTACK           uninit   0x2000'0408            0x400  <Block tail>
+                            - 0x2000'0808            0x400
+
+Unused ranges:
+
+         From           To      Size
+         ----           --      ----
+   0x800'10f0   0x803'ffff  0x3'ef10
+  0x2000'0808  0x2000'bfff    0xb7f8
+
+
+*******************************************************************************
+*** INIT TABLE
+***
+
+          Address      Size
+          -------      ----
+Zero (__iar_zero_init3)
+    1 destination range, total size 0x404:
+          0x2000'0004  0x404
+
+Copy (__iar_copy_init3)
+    1 source range, total size 0x4:
+           0x800'10ec    0x4
+    1 destination range, total size 0x4:
+          0x2000'0000    0x4
+
+
+
+*******************************************************************************
+*** MODULE SUMMARY
+***
+
+    Module                 ro code  ro data  rw data
+    ------                 -------  -------  -------
+command line/config:
+    ------------------------------------------------
+    Total:
+
+D:\Test\Debug\Obj\APP_7154173064415748325.dir: [1]
+    main.o                   1'188        8    1'028
+    ------------------------------------------------
+    Total:                   1'188        8    1'028
+
+D:\Test\Debug\Obj\CMSIS_13545061835669826545.dir: [2]
+    startup_gd32f30x_hd.o      592
+    system_gd32f30x.o          332        4        4
+    ------------------------------------------------
+    Total:                     924        4        4
+
+D:\Test\Debug\Obj\DRIVER_5575765168185057779.dir: [3]
+    gd32f30x_gpio.o            222
+    gd32f30x_i2c.o             532
+    gd32f30x_rcu.o             332       32
+    ------------------------------------------------
+    Total:                   1'086       32
+
+dl7M_tln.a: [4]
+    exit.o                       4
+    low_level_init.o             4
+    ------------------------------------------------
+    Total:                       8
+
+m7M_tls.a: [5]
+    DblMul.o                   426
+    DblToS32.o                  54
+    S32ToDbl.o                  34
+    fpinit_M.o                  34
+    ------------------------------------------------
+    Total:                     548
+
+rt7M_tl.a: [6]
+    ABImemcpy.o                134
+    ABImemset.o                102
+    cexit.o                     10
+    cmain.o                     30
+    copy_init3.o                42
+    cstartup_M.o                28
+    data_init.o                 42
+    memset.o                    20
+    zero_init3.o                56
+    ------------------------------------------------
+    Total:                     464
+
+shb_l.a: [7]
+    exit.o                      20
+    ------------------------------------------------
+    Total:                      20
+
+    Gaps                        16        2
+    Linker created                       36    1'024
+----------------------------------------------------
+    Grand Total:             4'254       82    2'056
+
+
+*******************************************************************************
+*** ENTRY LIST
+***
+
+Entry                       Address   Size  Type      Object
+-----                       -------   ----  ----      ------
+.iar.init_table$$Base    0x800'0f1c          --   Gb  - Linker created -
+.iar.init_table$$Limit   0x800'0f40          --   Gb  - Linker created -
+?main                    0x800'0f41         Code  ??  cmain.o [6]
+ADC0_1_IRQHandler        0x800'1045         Code  Wk  startup_gd32f30x_hd.o [2]
+ADC2_IRQHandler          0x800'10b9         Code  Wk  startup_gd32f30x_hd.o [2]
+BusFault_Handler         0x800'0fe9         Code  Wk  startup_gd32f30x_hd.o [2]
+CAN0_EWMC_IRQHandler     0x800'1055         Code  Wk  startup_gd32f30x_hd.o [2]
+CAN0_RX1_IRQHandler      0x800'1051         Code  Wk  startup_gd32f30x_hd.o [2]
+CSTACK$$Base            0x2000'0408          --   Gb  - Linker created -
+CSTACK$$Limit           0x2000'0808          --   ??  - Linker created -
+DMA0_Channel0_IRQHandler
+                         0x800'1029         Code  Wk  startup_gd32f30x_hd.o [2]
+DMA0_Channel1_IRQHandler
+                         0x800'102d         Code  Wk  startup_gd32f30x_hd.o [2]
+DMA0_Channel2_IRQHandler
+                         0x800'1031         Code  Wk  startup_gd32f30x_hd.o [2]
+DMA0_Channel3_IRQHandler
+                         0x800'1035         Code  Wk  startup_gd32f30x_hd.o [2]
+DMA0_Channel4_IRQHandler
+                         0x800'1039         Code  Wk  startup_gd32f30x_hd.o [2]
+DMA0_Channel5_IRQHandler
+                         0x800'103d         Code  Wk  startup_gd32f30x_hd.o [2]
+DMA0_Channel6_IRQHandler
+                         0x800'1041         Code  Wk  startup_gd32f30x_hd.o [2]
+DMA1_Channel0_IRQHandler
+                         0x800'10dd         Code  Wk  startup_gd32f30x_hd.o [2]
+DMA1_Channel1_IRQHandler
+                         0x800'10e1         Code  Wk  startup_gd32f30x_hd.o [2]
+DMA1_Channel2_IRQHandler
+                         0x800'10e5         Code  Wk  startup_gd32f30x_hd.o [2]
+DMA1_Channel3_4_IRQHandler
+                         0x800'10e9         Code  Wk  startup_gd32f30x_hd.o [2]
+DebugMon_Handler         0x800'0ff5         Code  Wk  startup_gd32f30x_hd.o [2]
+EXMC_IRQHandler          0x800'10bd         Code  Wk  startup_gd32f30x_hd.o [2]
+EXTI0_IRQHandler         0x800'1015         Code  Wk  startup_gd32f30x_hd.o [2]
+EXTI10_15_IRQHandler     0x800'109d         Code  Wk  startup_gd32f30x_hd.o [2]
+EXTI1_IRQHandler         0x800'1019         Code  Wk  startup_gd32f30x_hd.o [2]
+EXTI2_IRQHandler         0x800'101d         Code  Wk  startup_gd32f30x_hd.o [2]
+EXTI3_IRQHandler         0x800'1021         Code  Wk  startup_gd32f30x_hd.o [2]
+EXTI4_IRQHandler         0x800'1025         Code  Wk  startup_gd32f30x_hd.o [2]
+EXTI5_9_IRQHandler       0x800'1059         Code  Wk  startup_gd32f30x_hd.o [2]
+FMC_IRQHandler           0x800'100d         Code  Wk  startup_gd32f30x_hd.o [2]
+HardFault_Handler        0x800'0fe1         Code  Wk  startup_gd32f30x_hd.o [2]
+I2C0_ER_IRQHandler       0x800'107d         Code  Wk  startup_gd32f30x_hd.o [2]
+I2C0_EV_IRQHandler       0x800'1079         Code  Wk  startup_gd32f30x_hd.o [2]
+I2C1_ER_IRQHandler       0x800'1085         Code  Wk  startup_gd32f30x_hd.o [2]
+I2C1_EV_IRQHandler       0x800'1081         Code  Wk  startup_gd32f30x_hd.o [2]
+LVD_IRQHandler           0x800'1001         Code  Wk  startup_gd32f30x_hd.o [2]
+MemManage_Handler        0x800'0fe5         Code  Wk  startup_gd32f30x_hd.o [2]
+NMI_Handler              0x800'0fdd         Code  Wk  startup_gd32f30x_hd.o [2]
+NVIC_SetPriority         0x800'0131   0x28  Code  Lc  main.o [1]
+OLED_ClearBuffer         0x800'0319   0x10  Code  Lc  main.o [1]
+OLED_Cmd                 0x800'01e1   0x84  Code  Lc  main.o [1]
+OLED_DataBlock           0x800'0265   0xb4  Code  Lc  main.o [1]
+OLED_Init                0x800'03a7   0xb2  Code  ??  main.o [1]
+OLED_Pixel               0x800'0351   0x56  Code  Lc  main.o [1]
+OLED_Update              0x800'0329   0x28  Code  Lc  main.o [1]
+PendSV_Handler           0x800'0ff9         Code  Wk  startup_gd32f30x_hd.o [2]
+RCU_CTC_IRQHandler       0x800'1011         Code  Wk  startup_gd32f30x_hd.o [2]
+RTC_Alarm_IRQHandler     0x800'10a1         Code  Wk  startup_gd32f30x_hd.o [2]
+RTC_IRQHandler           0x800'1009         Code  Wk  startup_gd32f30x_hd.o [2]
+Region$$Table$$Base      0x800'0f1c          --   ??  - Linker created -
+Region$$Table$$Limit     0x800'0f40          --   ??  - Linker created -
+Reset_Handler            0x800'0fb5         Code  Wk  startup_gd32f30x_hd.o [2]
+SDIO_IRQHandler          0x800'10c1         Code  Wk  startup_gd32f30x_hd.o [2]
+SPI0_IRQHandler          0x800'1089         Code  Wk  startup_gd32f30x_hd.o [2]
+SPI1_IRQHandler          0x800'108d         Code  Wk  startup_gd32f30x_hd.o [2]
+SPI2_IRQHandler          0x800'10c9         Code  Wk  startup_gd32f30x_hd.o [2]
+SVC_Handler              0x800'0ff1         Code  Wk  startup_gd32f30x_hd.o [2]
+SysTick_Config           0x800'0159   0x34  Code  Lc  main.o [1]
+SysTick_Handler          0x800'018d    0xc  Code  ??  main.o [1]
+SystemCoreClock         0x2000'0000    0x4  Data  ??  system_gd32f30x.o [2]
+SystemInit               0x800'0c59   0x5e  Code  ??  system_gd32f30x.o [2]
+TAMPER_IRQHandler        0x800'1005         Code  Wk  startup_gd32f30x_hd.o [2]
+TIMER0_BRK_IRQHandler    0x800'105d         Code  Wk  startup_gd32f30x_hd.o [2]
+TIMER0_Channel_IRQHandler
+                         0x800'1069         Code  Wk  startup_gd32f30x_hd.o [2]
+TIMER0_TRG_CMT_IRQHandler
+                         0x800'1065         Code  Wk  startup_gd32f30x_hd.o [2]
+TIMER0_UP_IRQHandler     0x800'1061         Code  Wk  startup_gd32f30x_hd.o [2]
+TIMER1_IRQHandler        0x800'106d         Code  Wk  startup_gd32f30x_hd.o [2]
+TIMER2_IRQHandler        0x800'1071         Code  Wk  startup_gd32f30x_hd.o [2]
+TIMER3_IRQHandler        0x800'1075         Code  Wk  startup_gd32f30x_hd.o [2]
+TIMER4_IRQHandler        0x800'10c5         Code  Wk  startup_gd32f30x_hd.o [2]
+TIMER5_IRQHandler        0x800'10d5         Code  Wk  startup_gd32f30x_hd.o [2]
+TIMER6_IRQHandler        0x800'10d9         Code  Wk  startup_gd32f30x_hd.o [2]
+TIMER7_BRK_IRQHandler    0x800'10a9         Code  Wk  startup_gd32f30x_hd.o [2]
+TIMER7_Channel_IRQHandler
+                         0x800'10b5         Code  Wk  startup_gd32f30x_hd.o [2]
+TIMER7_TRG_CMT_IRQHandler
+                         0x800'10b1         Code  Wk  startup_gd32f30x_hd.o [2]
+TIMER7_UP_IRQHandler     0x800'10ad         Code  Wk  startup_gd32f30x_hd.o [2]
+UART3_IRQHandler         0x800'10cd         Code  Wk  startup_gd32f30x_hd.o [2]
+UART4_IRQHandler         0x800'10d1         Code  Wk  startup_gd32f30x_hd.o [2]
+USART0_IRQHandler        0x800'1091         Code  Wk  startup_gd32f30x_hd.o [2]
+USART1_IRQHandler        0x800'1095         Code  Wk  startup_gd32f30x_hd.o [2]
+USART2_IRQHandler        0x800'1099         Code  Wk  startup_gd32f30x_hd.o [2]
+USBD_HP_CAN0_TX_IRQHandler
+                         0x800'1049         Code  Wk  startup_gd32f30x_hd.o [2]
+USBD_LP_CAN0_RX0_IRQHandler
+                         0x800'104d         Code  Wk  startup_gd32f30x_hd.o [2]
+USBD_WKUP_IRQHandler     0x800'10a5         Code  Wk  startup_gd32f30x_hd.o [2]
+UsageFault_Handler       0x800'0fed         Code  Wk  startup_gd32f30x_hd.o [2]
+WWDGT_IRQHandler         0x800'0ffd         Code  Wk  startup_gd32f30x_hd.o [2]
+__aeabi_d2iz             0x800'0c21         Code  ??  DblToS32.o [5]
+__aeabi_dmul             0x800'0a75         Code  ??  DblMul.o [5]
+__aeabi_i2d              0x800'0a51         Code  ??  S32ToDbl.o [5]
+__aeabi_memcpy4          0x800'0da5         Code  ??  ABImemcpy.o [6]
+__aeabi_memcpy8          0x800'0da5         Code  ??  ABImemcpy.o [6]
+__aeabi_memset           0x800'0e2d         Code  ??  ABImemset.o [6]
+__cmain                  0x800'0f41         Code  ??  cmain.o [6]
+__exit                   0x800'0f75   0x14  Code  ??  exit.o [7]
+__iar_Memset             0x800'0e2d         Code  ??  ABImemset.o [6]
+__iar_Memset_word        0x800'0e35         Code  ??  ABImemset.o [6]
+__iar_copy_init3         0x800'07ff   0x2a  Code  ??  copy_init3.o [6]
+__iar_data_init3         0x800'0ecd   0x18  Code  ??  data_init.o [6]
+__iar_init_vfp           0x800'0ef9         Code  ??  fpinit_M.o [5]
+__iar_program_start      0x800'0f89         Code  ??  cstartup_M.o [6]
+__iar_zero_init3         0x800'0e93   0x38  Code  ??  zero_init3.o [6]
+__low_level_init         0x800'0f5f    0x4  Code  ??  low_level_init.o [4]
+__vector_table           0x800'0000         Data  ??  startup_gd32f30x_hd.o [2]
+_call_main               0x800'0f4d         Code  ??  cmain.o [6]
+_exit                    0x800'0f69         Code  ??  cexit.o [6]
+delay_ms                 0x800'0199   0x10  Code  ??  main.o [1]
+draw_elbrus              0x800'0459  0x116  Code  ??  main.o [1]
+exit                     0x800'0f63    0x4  Code  ??  exit.o [4]
+gpio_init                0x800'0721   0xde  Code  ??  gd32f30x_gpio.o [3]
+i2c_clock_config         0x800'0829  0x16c  Code  ??  gd32f30x_i2c.o [3]
+i2c_config               0x800'01a9   0x38  Code  ??  main.o [1]
+i2c_data_transmit        0x800'09c9    0x8  Code  ??  gd32f30x_i2c.o [3]
+i2c_enable               0x800'09ab    0xa  Code  ??  gd32f30x_i2c.o [3]
+i2c_flag_clear           0x800'09ef   0x40  Code  ??  gd32f30x_i2c.o [3]
+i2c_flag_get             0x800'09d1   0x1e  Code  ??  gd32f30x_i2c.o [3]
+i2c_master_addressing    0x800'0995   0x16  Code  ??  gd32f30x_i2c.o [3]
+i2c_start_on_bus         0x800'09b5    0xa  Code  ??  gd32f30x_i2c.o [3]
+i2c_stop_on_bus          0x800'09bf    0xa  Code  ??  gd32f30x_i2c.o [3]
+main                     0x800'056f   0x30  Code  ??  main.o [1]
+memset                   0x800'0a3d   0x14  Code  ??  memset.o [6]
+msTicks                 0x2000'0404    0x4  Data  ??  main.o [1]
+oled_buffer             0x2000'0004  0x400  Data  Lc  main.o [1]
+rcu_clock_freq_get       0x800'05fb  0x100  Code  ??  gd32f30x_rcu.o [3]
+rcu_periph_clock_enable
+                         0x800'05d5   0x26  Code  ??  gd32f30x_rcu.o [3]
+system_clock_120m_hxtal
+                         0x800'0cbf   0xb8  Code  Lc  system_gd32f30x.o [2]
+system_clock_config      0x800'0cb7    0x8  Code  Lc  system_gd32f30x.o [2]
+
+
+[1] = D:\Test\Debug\Obj\APP_7154173064415748325.dir
+[2] = D:\Test\Debug\Obj\CMSIS_13545061835669826545.dir
+[3] = D:\Test\Debug\Obj\DRIVER_5575765168185057779.dir
+[4] = dl7M_tln.a
+[5] = m7M_tls.a
+[6] = rt7M_tl.a
+[7] = shb_l.a
+
+  4'254 bytes of readonly  code memory
+     82 bytes of readonly  data memory
+  2'056 bytes of readwrite data memory
+
+Errors: none
+Warnings: none

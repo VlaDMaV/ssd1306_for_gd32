@@ -1,0 +1,43 @@
+D:\Test\Debug\BrowseInfo\APP_7154173064415748325.dir\main.pbi: \
+  D:\Test\main.c D:\Test\gd32f30x.h D:\Test\CMSIS_GD\core_cm4.h \
+  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.2\arm\inc\c\stdint.h \
+  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.2\arm\inc\c\ycheck.h \
+  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.2\arm\inc\c\yvals.h \
+  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.2\arm\inc\c\DLib_Defaults.h \
+  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.2\arm\inc\c\DLib_Config_Normal.h \
+  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.2\arm\inc\c\DLib_Product.h \
+  D:\Test\CMSIS_GD\core_cmInstr.h \
+  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.2\arm\inc\c\aarch32\cmsis_iar.h \
+  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.2\arm\inc\c\aarch32\iccarm_builtin.h \
+  D:\Test\CMSIS_GD\core_cmFunc.h D:\Test\CMSIS_GD\core_cm4_simd.h \
+  D:\Test\system_gd32f30x.h D:\Test\driver_GD\inc\gd32f30x_libopt.h \
+  D:\Test\driver_GD\inc\gd32f30x_rcu.h D:\Test\gd32f30x.h \
+  D:\Test\driver_GD\inc\gd32f30x_adc.h \
+  D:\Test\driver_GD\inc\gd32f30x_can.h \
+  D:\Test\driver_GD\inc\gd32f30x_crc.h \
+  D:\Test\driver_GD\inc\gd32f30x_ctc.h \
+  D:\Test\driver_GD\inc\gd32f30x_dac.h \
+  D:\Test\driver_GD\inc\gd32f30x_dbg.h \
+  D:\Test\driver_GD\inc\gd32f30x_dma.h \
+  D:\Test\driver_GD\inc\gd32f30x_exti.h \
+  D:\Test\driver_GD\inc\gd32f30x_fmc.h \
+  D:\Test\driver_GD\inc\gd32f30x_fwdgt.h \
+  D:\Test\driver_GD\inc\gd32f30x_gpio.h \
+  D:\Test\driver_GD\inc\gd32f30x_i2c.h \
+  D:\Test\driver_GD\inc\gd32f30x_pmu.h \
+  D:\Test\driver_GD\inc\gd32f30x_bkp.h \
+  D:\Test\driver_GD\inc\gd32f30x_rtc.h \
+  D:\Test\driver_GD\inc\gd32f30x_sdio.h \
+  D:\Test\driver_GD\inc\gd32f30x_spi.h \
+  D:\Test\driver_GD\inc\gd32f30x_timer.h \
+  D:\Test\driver_GD\inc\gd32f30x_usart.h \
+  D:\Test\driver_GD\inc\gd32f30x_wwdgt.h \
+  D:\Test\driver_GD\inc\gd32f30x_misc.h \
+  D:\Test\driver_GD\inc\gd32f30x_enet.h \
+  D:\Test\driver_GD\inc\gd32f30x_exmc.h \
+  D:\Test\driver_GD\inc\gd32f30x_rcu.h \
+  D:\Test\driver_GD\inc\gd32f30x_gpio.h \
+  D:\Test\driver_GD\inc\gd32f30x_i2c.h \
+  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.2\arm\inc\c\stdlib.h \
+  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.2\arm\inc\c\ysizet.h \
+  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.2\arm\inc\c\DLib_Product_stdlib.h

@@ -1,0 +1,295 @@
+##IAR Ninja build file
+
+
+#Rules
+rule COMPILER_XCL
+  command = "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\common\bin\XclFileGenerator.exe" $xclcommand -f "$rspfile_name"
+  description = IAR_NEW_TOOL+++COMPILER_XCL+++$out
+  rspfile = $rspfile_name
+  rspfile_content = $flags
+
+rule INDEXER
+  command = "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\common\bin\SourceIndexer.exe" $flags
+  depfile = $out.dep
+  deps = gcc
+  description = IAR_NEW_TOOL+++INDEXER+++$out
+
+rule MAKEBROWSE
+  command = "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\common\bin\makeBrowseData.exe" $flags
+  description = IAR_NEW_TOOL+++MAKEBROWSE+++$out
+
+rule PDBLINK
+  command = "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\common\bin\PbdLink.exe" $flags
+  description = IAR_NEW_TOOL+++PDBLINK+++$out
+
+
+
+#Build steps
+build D$:\Test\Debug\BrowseInfo\APP_7154173064415748325.dir\main.xcl : COMPILER_XCL 
+    flags = D$:\Test\main.c -D GD32F30X_HD -o D$:\Test\Debug\Obj\APP_7154173064415748325.dir --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\inc\c\DLib_Config_Normal.h" -I D$:\Test\CMSIS_GD\GD\GD32F30x\Include\ -I D$:\Test\CMSIS_GD\GD\GD32F30x\Source\IAR\ -I D$:\Test\CMSIS_GD\ -I D$:\Test\driver_GD\src\ -I D$:\Test\driver_GD\inc\ -Ol --predef_macros D$:\Test\Debug\BrowseInfo\APP_7154173064415748325.dir\main.tmp
+    rspfile_name = D$:\Test\Debug\BrowseInfo\APP_7154173064415748325.dir\main.xcl.rsp
+    xclcommand = -source_file D$:\Test\main.c -xcl_file D$:\Test\Debug\BrowseInfo\APP_7154173064415748325.dir\main.xcl -macro_file D$:\Test\Debug\BrowseInfo\APP_7154173064415748325.dir\main.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\bin\iccarm.exe"
+
+build D$:\Test\Debug\BrowseInfo\APP_7154173064415748325.dir\oled.xcl : COMPILER_XCL 
+    flags = D$:\Test\oled.c -D GD32F30X_HD -o D$:\Test\Debug\Obj\APP_7154173064415748325.dir --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\inc\c\DLib_Config_Normal.h" -I D$:\Test\CMSIS_GD\GD\GD32F30x\Include\ -I D$:\Test\CMSIS_GD\GD\GD32F30x\Source\IAR\ -I D$:\Test\CMSIS_GD\ -I D$:\Test\driver_GD\src\ -I D$:\Test\driver_GD\inc\ -Ol --predef_macros D$:\Test\Debug\BrowseInfo\APP_7154173064415748325.dir\oled.tmp
+    rspfile_name = D$:\Test\Debug\BrowseInfo\APP_7154173064415748325.dir\oled.xcl.rsp
+    xclcommand = -source_file D$:\Test\oled.c -xcl_file D$:\Test\Debug\BrowseInfo\APP_7154173064415748325.dir\oled.xcl -macro_file D$:\Test\Debug\BrowseInfo\APP_7154173064415748325.dir\oled.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\bin\iccarm.exe"
+
+build D$:\Test\Debug\BrowseInfo\APP_7154173064415748325.dir\st7735.xcl : COMPILER_XCL 
+    flags = D$:\Test\st7735.c -D GD32F30X_HD -o D$:\Test\Debug\Obj\APP_7154173064415748325.dir --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\inc\c\DLib_Config_Normal.h" -I D$:\Test\CMSIS_GD\GD\GD32F30x\Include\ -I D$:\Test\CMSIS_GD\GD\GD32F30x\Source\IAR\ -I D$:\Test\CMSIS_GD\ -I D$:\Test\driver_GD\src\ -I D$:\Test\driver_GD\inc\ -Ol --predef_macros D$:\Test\Debug\BrowseInfo\APP_7154173064415748325.dir\st7735.tmp
+    rspfile_name = D$:\Test\Debug\BrowseInfo\APP_7154173064415748325.dir\st7735.xcl.rsp
+    xclcommand = -source_file D$:\Test\st7735.c -xcl_file D$:\Test\Debug\BrowseInfo\APP_7154173064415748325.dir\st7735.xcl -macro_file D$:\Test\Debug\BrowseInfo\APP_7154173064415748325.dir\st7735.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\bin\iccarm.exe"
+
+build D$:\Test\Debug\BrowseInfo\CMSIS_13545061835669826545.dir\system_gd32f30x.xcl : COMPILER_XCL 
+    flags = D$:\Test\CMSIS_GD\GD\GD32F30x\Source\system_gd32f30x.c -D GD32F30X_HD -o D$:\Test\Debug\Obj\CMSIS_13545061835669826545.dir --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\inc\c\DLib_Config_Normal.h" -I D$:\Test\CMSIS_GD\GD\GD32F30x\Include\ -I D$:\Test\CMSIS_GD\GD\GD32F30x\Source\IAR\ -I D$:\Test\CMSIS_GD\ -I D$:\Test\driver_GD\src\ -I D$:\Test\driver_GD\inc\ -Ol --predef_macros D$:\Test\Debug\BrowseInfo\CMSIS_13545061835669826545.dir\system_gd32f30x.tmp
+    rspfile_name = D$:\Test\Debug\BrowseInfo\CMSIS_13545061835669826545.dir\system_gd32f30x.xcl.rsp
+    xclcommand = -source_file D$:\Test\CMSIS_GD\GD\GD32F30x\Source\system_gd32f30x.c -xcl_file D$:\Test\Debug\BrowseInfo\CMSIS_13545061835669826545.dir\system_gd32f30x.xcl -macro_file D$:\Test\Debug\BrowseInfo\CMSIS_13545061835669826545.dir\system_gd32f30x.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\bin\iccarm.exe"
+
+build D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_adc.xcl : COMPILER_XCL 
+    flags = D$:\Test\driver_GD\src\gd32f30x_adc.c -D GD32F30X_HD -o D$:\Test\Debug\Obj\DRIVER_5575765168185057779.dir --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\inc\c\DLib_Config_Normal.h" -I D$:\Test\CMSIS_GD\GD\GD32F30x\Include\ -I D$:\Test\CMSIS_GD\GD\GD32F30x\Source\IAR\ -I D$:\Test\CMSIS_GD\ -I D$:\Test\driver_GD\src\ -I D$:\Test\driver_GD\inc\ -Ol --predef_macros D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_adc.tmp
+    rspfile_name = D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_adc.xcl.rsp
+    xclcommand = -source_file D$:\Test\driver_GD\src\gd32f30x_adc.c -xcl_file D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_adc.xcl -macro_file D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_adc.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\bin\iccarm.exe"
+
+build D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_bkp.xcl : COMPILER_XCL 
+    flags = D$:\Test\driver_GD\src\gd32f30x_bkp.c -D GD32F30X_HD -o D$:\Test\Debug\Obj\DRIVER_5575765168185057779.dir --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\inc\c\DLib_Config_Normal.h" -I D$:\Test\CMSIS_GD\GD\GD32F30x\Include\ -I D$:\Test\CMSIS_GD\GD\GD32F30x\Source\IAR\ -I D$:\Test\CMSIS_GD\ -I D$:\Test\driver_GD\src\ -I D$:\Test\driver_GD\inc\ -Ol --predef_macros D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_bkp.tmp
+    rspfile_name = D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_bkp.xcl.rsp
+    xclcommand = -source_file D$:\Test\driver_GD\src\gd32f30x_bkp.c -xcl_file D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_bkp.xcl -macro_file D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_bkp.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\bin\iccarm.exe"
+
+build D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_can.xcl : COMPILER_XCL 
+    flags = D$:\Test\driver_GD\src\gd32f30x_can.c -D GD32F30X_HD -o D$:\Test\Debug\Obj\DRIVER_5575765168185057779.dir --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\inc\c\DLib_Config_Normal.h" -I D$:\Test\CMSIS_GD\GD\GD32F30x\Include\ -I D$:\Test\CMSIS_GD\GD\GD32F30x\Source\IAR\ -I D$:\Test\CMSIS_GD\ -I D$:\Test\driver_GD\src\ -I D$:\Test\driver_GD\inc\ -Ol --predef_macros D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_can.tmp
+    rspfile_name = D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_can.xcl.rsp
+    xclcommand = -source_file D$:\Test\driver_GD\src\gd32f30x_can.c -xcl_file D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_can.xcl -macro_file D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_can.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\bin\iccarm.exe"
+
+build D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_crc.xcl : COMPILER_XCL 
+    flags = D$:\Test\driver_GD\src\gd32f30x_crc.c -D GD32F30X_HD -o D$:\Test\Debug\Obj\DRIVER_5575765168185057779.dir --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\inc\c\DLib_Config_Normal.h" -I D$:\Test\CMSIS_GD\GD\GD32F30x\Include\ -I D$:\Test\CMSIS_GD\GD\GD32F30x\Source\IAR\ -I D$:\Test\CMSIS_GD\ -I D$:\Test\driver_GD\src\ -I D$:\Test\driver_GD\inc\ -Ol --predef_macros D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_crc.tmp
+    rspfile_name = D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_crc.xcl.rsp
+    xclcommand = -source_file D$:\Test\driver_GD\src\gd32f30x_crc.c -xcl_file D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_crc.xcl -macro_file D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_crc.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\bin\iccarm.exe"
+
+build D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_ctc.xcl : COMPILER_XCL 
+    flags = D$:\Test\driver_GD\src\gd32f30x_ctc.c -D GD32F30X_HD -o D$:\Test\Debug\Obj\DRIVER_5575765168185057779.dir --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\inc\c\DLib_Config_Normal.h" -I D$:\Test\CMSIS_GD\GD\GD32F30x\Include\ -I D$:\Test\CMSIS_GD\GD\GD32F30x\Source\IAR\ -I D$:\Test\CMSIS_GD\ -I D$:\Test\driver_GD\src\ -I D$:\Test\driver_GD\inc\ -Ol --predef_macros D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_ctc.tmp
+    rspfile_name = D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_ctc.xcl.rsp
+    xclcommand = -source_file D$:\Test\driver_GD\src\gd32f30x_ctc.c -xcl_file D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_ctc.xcl -macro_file D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_ctc.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\bin\iccarm.exe"
+
+build D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_dac.xcl : COMPILER_XCL 
+    flags = D$:\Test\driver_GD\src\gd32f30x_dac.c -D GD32F30X_HD -o D$:\Test\Debug\Obj\DRIVER_5575765168185057779.dir --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\inc\c\DLib_Config_Normal.h" -I D$:\Test\CMSIS_GD\GD\GD32F30x\Include\ -I D$:\Test\CMSIS_GD\GD\GD32F30x\Source\IAR\ -I D$:\Test\CMSIS_GD\ -I D$:\Test\driver_GD\src\ -I D$:\Test\driver_GD\inc\ -Ol --predef_macros D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_dac.tmp
+    rspfile_name = D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_dac.xcl.rsp
+    xclcommand = -source_file D$:\Test\driver_GD\src\gd32f30x_dac.c -xcl_file D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_dac.xcl -macro_file D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_dac.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\bin\iccarm.exe"
+
+build D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_dbg.xcl : COMPILER_XCL 
+    flags = D$:\Test\driver_GD\src\gd32f30x_dbg.c -D GD32F30X_HD -o D$:\Test\Debug\Obj\DRIVER_5575765168185057779.dir --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\inc\c\DLib_Config_Normal.h" -I D$:\Test\CMSIS_GD\GD\GD32F30x\Include\ -I D$:\Test\CMSIS_GD\GD\GD32F30x\Source\IAR\ -I D$:\Test\CMSIS_GD\ -I D$:\Test\driver_GD\src\ -I D$:\Test\driver_GD\inc\ -Ol --predef_macros D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_dbg.tmp
+    rspfile_name = D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_dbg.xcl.rsp
+    xclcommand = -source_file D$:\Test\driver_GD\src\gd32f30x_dbg.c -xcl_file D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_dbg.xcl -macro_file D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_dbg.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\bin\iccarm.exe"
+
+build D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_dma.xcl : COMPILER_XCL 
+    flags = D$:\Test\driver_GD\src\gd32f30x_dma.c -D GD32F30X_HD -o D$:\Test\Debug\Obj\DRIVER_5575765168185057779.dir --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\inc\c\DLib_Config_Normal.h" -I D$:\Test\CMSIS_GD\GD\GD32F30x\Include\ -I D$:\Test\CMSIS_GD\GD\GD32F30x\Source\IAR\ -I D$:\Test\CMSIS_GD\ -I D$:\Test\driver_GD\src\ -I D$:\Test\driver_GD\inc\ -Ol --predef_macros D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_dma.tmp
+    rspfile_name = D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_dma.xcl.rsp
+    xclcommand = -source_file D$:\Test\driver_GD\src\gd32f30x_dma.c -xcl_file D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_dma.xcl -macro_file D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_dma.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\bin\iccarm.exe"
+
+build D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_enet.xcl : COMPILER_XCL 
+    flags = D$:\Test\driver_GD\src\gd32f30x_enet.c -D GD32F30X_HD -o D$:\Test\Debug\Obj\DRIVER_5575765168185057779.dir --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\inc\c\DLib_Config_Normal.h" -I D$:\Test\CMSIS_GD\GD\GD32F30x\Include\ -I D$:\Test\CMSIS_GD\GD\GD32F30x\Source\IAR\ -I D$:\Test\CMSIS_GD\ -I D$:\Test\driver_GD\src\ -I D$:\Test\driver_GD\inc\ -Ol --predef_macros D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_enet.tmp
+    rspfile_name = D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_enet.xcl.rsp
+    xclcommand = -source_file D$:\Test\driver_GD\src\gd32f30x_enet.c -xcl_file D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_enet.xcl -macro_file D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_enet.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\bin\iccarm.exe"
+
+build D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_exmc.xcl : COMPILER_XCL 
+    flags = D$:\Test\driver_GD\src\gd32f30x_exmc.c -D GD32F30X_HD -o D$:\Test\Debug\Obj\DRIVER_5575765168185057779.dir --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\inc\c\DLib_Config_Normal.h" -I D$:\Test\CMSIS_GD\GD\GD32F30x\Include\ -I D$:\Test\CMSIS_GD\GD\GD32F30x\Source\IAR\ -I D$:\Test\CMSIS_GD\ -I D$:\Test\driver_GD\src\ -I D$:\Test\driver_GD\inc\ -Ol --predef_macros D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_exmc.tmp
+    rspfile_name = D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_exmc.xcl.rsp
+    xclcommand = -source_file D$:\Test\driver_GD\src\gd32f30x_exmc.c -xcl_file D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_exmc.xcl -macro_file D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_exmc.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\bin\iccarm.exe"
+
+build D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_exti.xcl : COMPILER_XCL 
+    flags = D$:\Test\driver_GD\src\gd32f30x_exti.c -D GD32F30X_HD -o D$:\Test\Debug\Obj\DRIVER_5575765168185057779.dir --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\inc\c\DLib_Config_Normal.h" -I D$:\Test\CMSIS_GD\GD\GD32F30x\Include\ -I D$:\Test\CMSIS_GD\GD\GD32F30x\Source\IAR\ -I D$:\Test\CMSIS_GD\ -I D$:\Test\driver_GD\src\ -I D$:\Test\driver_GD\inc\ -Ol --predef_macros D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_exti.tmp
+    rspfile_name = D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_exti.xcl.rsp
+    xclcommand = -source_file D$:\Test\driver_GD\src\gd32f30x_exti.c -xcl_file D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_exti.xcl -macro_file D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_exti.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\bin\iccarm.exe"
+
+build D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_fmc.xcl : COMPILER_XCL 
+    flags = D$:\Test\driver_GD\src\gd32f30x_fmc.c -D GD32F30X_HD -o D$:\Test\Debug\Obj\DRIVER_5575765168185057779.dir --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\inc\c\DLib_Config_Normal.h" -I D$:\Test\CMSIS_GD\GD\GD32F30x\Include\ -I D$:\Test\CMSIS_GD\GD\GD32F30x\Source\IAR\ -I D$:\Test\CMSIS_GD\ -I D$:\Test\driver_GD\src\ -I D$:\Test\driver_GD\inc\ -Ol --predef_macros D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_fmc.tmp
+    rspfile_name = D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_fmc.xcl.rsp
+    xclcommand = -source_file D$:\Test\driver_GD\src\gd32f30x_fmc.c -xcl_file D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_fmc.xcl -macro_file D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_fmc.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\bin\iccarm.exe"
+
+build D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_fwdgt.xcl : COMPILER_XCL 
+    flags = D$:\Test\driver_GD\src\gd32f30x_fwdgt.c -D GD32F30X_HD -o D$:\Test\Debug\Obj\DRIVER_5575765168185057779.dir --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\inc\c\DLib_Config_Normal.h" -I D$:\Test\CMSIS_GD\GD\GD32F30x\Include\ -I D$:\Test\CMSIS_GD\GD\GD32F30x\Source\IAR\ -I D$:\Test\CMSIS_GD\ -I D$:\Test\driver_GD\src\ -I D$:\Test\driver_GD\inc\ -Ol --predef_macros D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_fwdgt.tmp
+    rspfile_name = D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_fwdgt.xcl.rsp
+    xclcommand = -source_file D$:\Test\driver_GD\src\gd32f30x_fwdgt.c -xcl_file D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_fwdgt.xcl -macro_file D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_fwdgt.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\bin\iccarm.exe"
+
+build D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_gpio.xcl : COMPILER_XCL 
+    flags = D$:\Test\driver_GD\src\gd32f30x_gpio.c -D GD32F30X_HD -o D$:\Test\Debug\Obj\DRIVER_5575765168185057779.dir --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\inc\c\DLib_Config_Normal.h" -I D$:\Test\CMSIS_GD\GD\GD32F30x\Include\ -I D$:\Test\CMSIS_GD\GD\GD32F30x\Source\IAR\ -I D$:\Test\CMSIS_GD\ -I D$:\Test\driver_GD\src\ -I D$:\Test\driver_GD\inc\ -Ol --predef_macros D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_gpio.tmp
+    rspfile_name = D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_gpio.xcl.rsp
+    xclcommand = -source_file D$:\Test\driver_GD\src\gd32f30x_gpio.c -xcl_file D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_gpio.xcl -macro_file D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_gpio.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\bin\iccarm.exe"
+
+build D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_i2c.xcl : COMPILER_XCL 
+    flags = D$:\Test\driver_GD\src\gd32f30x_i2c.c -D GD32F30X_HD -o D$:\Test\Debug\Obj\DRIVER_5575765168185057779.dir --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\inc\c\DLib_Config_Normal.h" -I D$:\Test\CMSIS_GD\GD\GD32F30x\Include\ -I D$:\Test\CMSIS_GD\GD\GD32F30x\Source\IAR\ -I D$:\Test\CMSIS_GD\ -I D$:\Test\driver_GD\src\ -I D$:\Test\driver_GD\inc\ -Ol --predef_macros D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_i2c.tmp
+    rspfile_name = D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_i2c.xcl.rsp
+    xclcommand = -source_file D$:\Test\driver_GD\src\gd32f30x_i2c.c -xcl_file D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_i2c.xcl -macro_file D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_i2c.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\bin\iccarm.exe"
+
+build D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_misc.xcl : COMPILER_XCL 
+    flags = D$:\Test\driver_GD\src\gd32f30x_misc.c -D GD32F30X_HD -o D$:\Test\Debug\Obj\DRIVER_5575765168185057779.dir --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\inc\c\DLib_Config_Normal.h" -I D$:\Test\CMSIS_GD\GD\GD32F30x\Include\ -I D$:\Test\CMSIS_GD\GD\GD32F30x\Source\IAR\ -I D$:\Test\CMSIS_GD\ -I D$:\Test\driver_GD\src\ -I D$:\Test\driver_GD\inc\ -Ol --predef_macros D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_misc.tmp
+    rspfile_name = D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_misc.xcl.rsp
+    xclcommand = -source_file D$:\Test\driver_GD\src\gd32f30x_misc.c -xcl_file D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_misc.xcl -macro_file D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_misc.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\bin\iccarm.exe"
+
+build D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_pmu.xcl : COMPILER_XCL 
+    flags = D$:\Test\driver_GD\src\gd32f30x_pmu.c -D GD32F30X_HD -o D$:\Test\Debug\Obj\DRIVER_5575765168185057779.dir --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\inc\c\DLib_Config_Normal.h" -I D$:\Test\CMSIS_GD\GD\GD32F30x\Include\ -I D$:\Test\CMSIS_GD\GD\GD32F30x\Source\IAR\ -I D$:\Test\CMSIS_GD\ -I D$:\Test\driver_GD\src\ -I D$:\Test\driver_GD\inc\ -Ol --predef_macros D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_pmu.tmp
+    rspfile_name = D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_pmu.xcl.rsp
+    xclcommand = -source_file D$:\Test\driver_GD\src\gd32f30x_pmu.c -xcl_file D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_pmu.xcl -macro_file D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_pmu.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\bin\iccarm.exe"
+
+build D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_rcu.xcl : COMPILER_XCL 
+    flags = D$:\Test\driver_GD\src\gd32f30x_rcu.c -D GD32F30X_HD -o D$:\Test\Debug\Obj\DRIVER_5575765168185057779.dir --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\inc\c\DLib_Config_Normal.h" -I D$:\Test\CMSIS_GD\GD\GD32F30x\Include\ -I D$:\Test\CMSIS_GD\GD\GD32F30x\Source\IAR\ -I D$:\Test\CMSIS_GD\ -I D$:\Test\driver_GD\src\ -I D$:\Test\driver_GD\inc\ -Ol --predef_macros D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_rcu.tmp
+    rspfile_name = D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_rcu.xcl.rsp
+    xclcommand = -source_file D$:\Test\driver_GD\src\gd32f30x_rcu.c -xcl_file D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_rcu.xcl -macro_file D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_rcu.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\bin\iccarm.exe"
+
+build D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_rtc.xcl : COMPILER_XCL 
+    flags = D$:\Test\driver_GD\src\gd32f30x_rtc.c -D GD32F30X_HD -o D$:\Test\Debug\Obj\DRIVER_5575765168185057779.dir --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\inc\c\DLib_Config_Normal.h" -I D$:\Test\CMSIS_GD\GD\GD32F30x\Include\ -I D$:\Test\CMSIS_GD\GD\GD32F30x\Source\IAR\ -I D$:\Test\CMSIS_GD\ -I D$:\Test\driver_GD\src\ -I D$:\Test\driver_GD\inc\ -Ol --predef_macros D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_rtc.tmp
+    rspfile_name = D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_rtc.xcl.rsp
+    xclcommand = -source_file D$:\Test\driver_GD\src\gd32f30x_rtc.c -xcl_file D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_rtc.xcl -macro_file D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_rtc.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\bin\iccarm.exe"
+
+build D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_sdio.xcl : COMPILER_XCL 
+    flags = D$:\Test\driver_GD\src\gd32f30x_sdio.c -D GD32F30X_HD -o D$:\Test\Debug\Obj\DRIVER_5575765168185057779.dir --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\inc\c\DLib_Config_Normal.h" -I D$:\Test\CMSIS_GD\GD\GD32F30x\Include\ -I D$:\Test\CMSIS_GD\GD\GD32F30x\Source\IAR\ -I D$:\Test\CMSIS_GD\ -I D$:\Test\driver_GD\src\ -I D$:\Test\driver_GD\inc\ -Ol --predef_macros D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_sdio.tmp
+    rspfile_name = D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_sdio.xcl.rsp
+    xclcommand = -source_file D$:\Test\driver_GD\src\gd32f30x_sdio.c -xcl_file D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_sdio.xcl -macro_file D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_sdio.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\bin\iccarm.exe"
+
+build D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_spi.xcl : COMPILER_XCL 
+    flags = D$:\Test\driver_GD\src\gd32f30x_spi.c -D GD32F30X_HD -o D$:\Test\Debug\Obj\DRIVER_5575765168185057779.dir --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\inc\c\DLib_Config_Normal.h" -I D$:\Test\CMSIS_GD\GD\GD32F30x\Include\ -I D$:\Test\CMSIS_GD\GD\GD32F30x\Source\IAR\ -I D$:\Test\CMSIS_GD\ -I D$:\Test\driver_GD\src\ -I D$:\Test\driver_GD\inc\ -Ol --predef_macros D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_spi.tmp
+    rspfile_name = D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_spi.xcl.rsp
+    xclcommand = -source_file D$:\Test\driver_GD\src\gd32f30x_spi.c -xcl_file D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_spi.xcl -macro_file D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_spi.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\bin\iccarm.exe"
+
+build D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_timer.xcl : COMPILER_XCL 
+    flags = D$:\Test\driver_GD\src\gd32f30x_timer.c -D GD32F30X_HD -o D$:\Test\Debug\Obj\DRIVER_5575765168185057779.dir --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\inc\c\DLib_Config_Normal.h" -I D$:\Test\CMSIS_GD\GD\GD32F30x\Include\ -I D$:\Test\CMSIS_GD\GD\GD32F30x\Source\IAR\ -I D$:\Test\CMSIS_GD\ -I D$:\Test\driver_GD\src\ -I D$:\Test\driver_GD\inc\ -Ol --predef_macros D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_timer.tmp
+    rspfile_name = D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_timer.xcl.rsp
+    xclcommand = -source_file D$:\Test\driver_GD\src\gd32f30x_timer.c -xcl_file D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_timer.xcl -macro_file D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_timer.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\bin\iccarm.exe"
+
+build D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_usart.xcl : COMPILER_XCL 
+    flags = D$:\Test\driver_GD\src\gd32f30x_usart.c -D GD32F30X_HD -o D$:\Test\Debug\Obj\DRIVER_5575765168185057779.dir --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\inc\c\DLib_Config_Normal.h" -I D$:\Test\CMSIS_GD\GD\GD32F30x\Include\ -I D$:\Test\CMSIS_GD\GD\GD32F30x\Source\IAR\ -I D$:\Test\CMSIS_GD\ -I D$:\Test\driver_GD\src\ -I D$:\Test\driver_GD\inc\ -Ol --predef_macros D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_usart.tmp
+    rspfile_name = D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_usart.xcl.rsp
+    xclcommand = -source_file D$:\Test\driver_GD\src\gd32f30x_usart.c -xcl_file D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_usart.xcl -macro_file D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_usart.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\bin\iccarm.exe"
+
+build D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_wwdgt.xcl : COMPILER_XCL 
+    flags = D$:\Test\driver_GD\src\gd32f30x_wwdgt.c -D GD32F30X_HD -o D$:\Test\Debug\Obj\DRIVER_5575765168185057779.dir --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\inc\c\DLib_Config_Normal.h" -I D$:\Test\CMSIS_GD\GD\GD32F30x\Include\ -I D$:\Test\CMSIS_GD\GD\GD32F30x\Source\IAR\ -I D$:\Test\CMSIS_GD\ -I D$:\Test\driver_GD\src\ -I D$:\Test\driver_GD\inc\ -Ol --predef_macros D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_wwdgt.tmp
+    rspfile_name = D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_wwdgt.xcl.rsp
+    xclcommand = -source_file D$:\Test\driver_GD\src\gd32f30x_wwdgt.c -xcl_file D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_wwdgt.xcl -macro_file D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_wwdgt.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\bin\iccarm.exe"
+
+build D$:\Test\Debug\BrowseInfo\APP_7154173064415748325.dir\main.pbi : INDEXER D$:\Test\Debug\BrowseInfo\APP_7154173064415748325.dir\main.xcl | D$:\Test\main.c
+    flags = -out=D$:\Test\Debug\BrowseInfo\APP_7154173064415748325.dir\main.pbi -f D$:\Test\Debug\BrowseInfo\APP_7154173064415748325.dir\main.xcl
+
+build D$:\Test\Debug\BrowseInfo\APP_7154173064415748325.dir\oled.pbi : INDEXER D$:\Test\Debug\BrowseInfo\APP_7154173064415748325.dir\oled.xcl | D$:\Test\oled.c
+    flags = -out=D$:\Test\Debug\BrowseInfo\APP_7154173064415748325.dir\oled.pbi -f D$:\Test\Debug\BrowseInfo\APP_7154173064415748325.dir\oled.xcl
+
+build D$:\Test\Debug\BrowseInfo\APP_7154173064415748325.dir\st7735.pbi : INDEXER D$:\Test\Debug\BrowseInfo\APP_7154173064415748325.dir\st7735.xcl | D$:\Test\st7735.c
+    flags = -out=D$:\Test\Debug\BrowseInfo\APP_7154173064415748325.dir\st7735.pbi -f D$:\Test\Debug\BrowseInfo\APP_7154173064415748325.dir\st7735.xcl
+
+build D$:\Test\Debug\BrowseInfo\CMSIS_13545061835669826545.dir\system_gd32f30x.pbi : INDEXER D$:\Test\Debug\BrowseInfo\CMSIS_13545061835669826545.dir\system_gd32f30x.xcl | D$:\Test\CMSIS_GD\GD\GD32F30x\Source\system_gd32f30x.c
+    flags = -out=D$:\Test\Debug\BrowseInfo\CMSIS_13545061835669826545.dir\system_gd32f30x.pbi -f D$:\Test\Debug\BrowseInfo\CMSIS_13545061835669826545.dir\system_gd32f30x.xcl
+
+build D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_adc.pbi : INDEXER D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_adc.xcl | D$:\Test\driver_GD\src\gd32f30x_adc.c
+    flags = -out=D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_adc.pbi -f D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_adc.xcl
+
+build D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_bkp.pbi : INDEXER D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_bkp.xcl | D$:\Test\driver_GD\src\gd32f30x_bkp.c
+    flags = -out=D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_bkp.pbi -f D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_bkp.xcl
+
+build D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_can.pbi : INDEXER D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_can.xcl | D$:\Test\driver_GD\src\gd32f30x_can.c
+    flags = -out=D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_can.pbi -f D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_can.xcl
+
+build D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_crc.pbi : INDEXER D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_crc.xcl | D$:\Test\driver_GD\src\gd32f30x_crc.c
+    flags = -out=D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_crc.pbi -f D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_crc.xcl
+
+build D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_ctc.pbi : INDEXER D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_ctc.xcl | D$:\Test\driver_GD\src\gd32f30x_ctc.c
+    flags = -out=D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_ctc.pbi -f D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_ctc.xcl
+
+build D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_dac.pbi : INDEXER D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_dac.xcl | D$:\Test\driver_GD\src\gd32f30x_dac.c
+    flags = -out=D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_dac.pbi -f D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_dac.xcl
+
+build D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_dbg.pbi : INDEXER D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_dbg.xcl | D$:\Test\driver_GD\src\gd32f30x_dbg.c
+    flags = -out=D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_dbg.pbi -f D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_dbg.xcl
+
+build D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_dma.pbi : INDEXER D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_dma.xcl | D$:\Test\driver_GD\src\gd32f30x_dma.c
+    flags = -out=D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_dma.pbi -f D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_dma.xcl
+
+build D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_enet.pbi : INDEXER D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_enet.xcl | D$:\Test\driver_GD\src\gd32f30x_enet.c
+    flags = -out=D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_enet.pbi -f D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_enet.xcl
+
+build D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_exmc.pbi : INDEXER D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_exmc.xcl | D$:\Test\driver_GD\src\gd32f30x_exmc.c
+    flags = -out=D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_exmc.pbi -f D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_exmc.xcl
+
+build D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_exti.pbi : INDEXER D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_exti.xcl | D$:\Test\driver_GD\src\gd32f30x_exti.c
+    flags = -out=D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_exti.pbi -f D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_exti.xcl
+
+build D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_fmc.pbi : INDEXER D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_fmc.xcl | D$:\Test\driver_GD\src\gd32f30x_fmc.c
+    flags = -out=D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_fmc.pbi -f D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_fmc.xcl
+
+build D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_fwdgt.pbi : INDEXER D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_fwdgt.xcl | D$:\Test\driver_GD\src\gd32f30x_fwdgt.c
+    flags = -out=D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_fwdgt.pbi -f D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_fwdgt.xcl
+
+build D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_gpio.pbi : INDEXER D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_gpio.xcl | D$:\Test\driver_GD\src\gd32f30x_gpio.c
+    flags = -out=D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_gpio.pbi -f D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_gpio.xcl
+
+build D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_i2c.pbi : INDEXER D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_i2c.xcl | D$:\Test\driver_GD\src\gd32f30x_i2c.c
+    flags = -out=D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_i2c.pbi -f D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_i2c.xcl
+
+build D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_misc.pbi : INDEXER D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_misc.xcl | D$:\Test\driver_GD\src\gd32f30x_misc.c
+    flags = -out=D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_misc.pbi -f D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_misc.xcl
+
+build D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_pmu.pbi : INDEXER D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_pmu.xcl | D$:\Test\driver_GD\src\gd32f30x_pmu.c
+    flags = -out=D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_pmu.pbi -f D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_pmu.xcl
+
+build D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_rcu.pbi : INDEXER D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_rcu.xcl | D$:\Test\driver_GD\src\gd32f30x_rcu.c
+    flags = -out=D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_rcu.pbi -f D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_rcu.xcl
+
+build D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_rtc.pbi : INDEXER D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_rtc.xcl | D$:\Test\driver_GD\src\gd32f30x_rtc.c
+    flags = -out=D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_rtc.pbi -f D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_rtc.xcl
+
+build D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_sdio.pbi : INDEXER D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_sdio.xcl | D$:\Test\driver_GD\src\gd32f30x_sdio.c
+    flags = -out=D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_sdio.pbi -f D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_sdio.xcl
+
+build D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_spi.pbi : INDEXER D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_spi.xcl | D$:\Test\driver_GD\src\gd32f30x_spi.c
+    flags = -out=D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_spi.pbi -f D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_spi.xcl
+
+build D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_timer.pbi : INDEXER D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_timer.xcl | D$:\Test\driver_GD\src\gd32f30x_timer.c
+    flags = -out=D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_timer.pbi -f D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_timer.xcl
+
+build D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_usart.pbi : INDEXER D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_usart.xcl | D$:\Test\driver_GD\src\gd32f30x_usart.c
+    flags = -out=D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_usart.pbi -f D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_usart.xcl
+
+build D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_wwdgt.pbi : INDEXER D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_wwdgt.xcl | D$:\Test\driver_GD\src\gd32f30x_wwdgt.c
+    flags = -out=D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_wwdgt.pbi -f D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_wwdgt.xcl
+
+build D$:\Test\Debug\BrowseInfo\test.pbw : MAKEBROWSE D$:\Test\Debug\BrowseInfo\test.pbd
+    flags = D$:\Test\Debug\BrowseInfo\test.pbd -output D$:\Test\Debug\BrowseInfo\test.pbw
+
+build D$:\Test\Debug\BrowseInfo\test_part0.pbi : PDBLINK D$:\Test\Debug\BrowseInfo\APP_7154173064415748325.dir\main.pbi | D$:\Test\Debug\BrowseInfo\APP_7154173064415748325.dir\oled.pbi $
+ D$:\Test\Debug\BrowseInfo\APP_7154173064415748325.dir\st7735.pbi $
+ D$:\Test\Debug\BrowseInfo\CMSIS_13545061835669826545.dir\system_gd32f30x.pbi $
+ D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_adc.pbi
+    flags = -M D$:\Test\Debug\BrowseInfo\test_part0.pbi D$:\Test\Debug\BrowseInfo\APP_7154173064415748325.dir\main.pbi D$:\Test\Debug\BrowseInfo\APP_7154173064415748325.dir\oled.pbi D$:\Test\Debug\BrowseInfo\APP_7154173064415748325.dir\st7735.pbi D$:\Test\Debug\BrowseInfo\CMSIS_13545061835669826545.dir\system_gd32f30x.pbi D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_adc.pbi
+
+build D$:\Test\Debug\BrowseInfo\test_part1.pbi : PDBLINK D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_bkp.pbi | D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_can.pbi $
+ D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_crc.pbi $
+ D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_ctc.pbi $
+ D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_dac.pbi
+    flags = -M D$:\Test\Debug\BrowseInfo\test_part1.pbi D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_bkp.pbi D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_can.pbi D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_crc.pbi D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_ctc.pbi D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_dac.pbi
+
+build D$:\Test\Debug\BrowseInfo\test_part2.pbi : PDBLINK D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_dbg.pbi | D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_dma.pbi $
+ D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_enet.pbi $
+ D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_exmc.pbi $
+ D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_exti.pbi
+    flags = -M D$:\Test\Debug\BrowseInfo\test_part2.pbi D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_dbg.pbi D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_dma.pbi D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_enet.pbi D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_exmc.pbi D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_exti.pbi
+
+build D$:\Test\Debug\BrowseInfo\test_part3.pbi : PDBLINK D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_fmc.pbi | D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_fwdgt.pbi $
+ D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_gpio.pbi $
+ D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_i2c.pbi $
+ D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_misc.pbi
+    flags = -M D$:\Test\Debug\BrowseInfo\test_part3.pbi D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_fmc.pbi D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_fwdgt.pbi D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_gpio.pbi D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_i2c.pbi D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_misc.pbi
+
+build D$:\Test\Debug\BrowseInfo\test_part4.pbi : PDBLINK D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_pmu.pbi | D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_rcu.pbi $
+ D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_rtc.pbi $
+ D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_sdio.pbi $
+ D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_spi.pbi
+    flags = -M D$:\Test\Debug\BrowseInfo\test_part4.pbi D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_pmu.pbi D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_rcu.pbi D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_rtc.pbi D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_sdio.pbi D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_spi.pbi
+
+build D$:\Test\Debug\BrowseInfo\test_part5.pbi : PDBLINK D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_timer.pbi | D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_usart.pbi $
+ D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_wwdgt.pbi
+    flags = -M D$:\Test\Debug\BrowseInfo\test_part5.pbi D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_timer.pbi D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_usart.pbi D$:\Test\Debug\BrowseInfo\DRIVER_5575765168185057779.dir\gd32f30x_wwdgt.pbi
+
+build D$:\Test\Debug\BrowseInfo\test.pbd : PDBLINK D$:\Test\Debug\BrowseInfo\test_part0.pbi | D$:\Test\Debug\BrowseInfo\test_part1.pbi $
+ D$:\Test\Debug\BrowseInfo\test_part2.pbi $
+ D$:\Test\Debug\BrowseInfo\test_part3.pbi $
+ D$:\Test\Debug\BrowseInfo\test_part4.pbi $
+ D$:\Test\Debug\BrowseInfo\test_part5.pbi
+    flags = -M D$:\Test\Debug\BrowseInfo\test.pbd D$:\Test\Debug\BrowseInfo\test_part0.pbi D$:\Test\Debug\BrowseInfo\test_part1.pbi D$:\Test\Debug\BrowseInfo\test_part2.pbi D$:\Test\Debug\BrowseInfo\test_part3.pbi D$:\Test\Debug\BrowseInfo\test_part4.pbi D$:\Test\Debug\BrowseInfo\test_part5.pbi
+

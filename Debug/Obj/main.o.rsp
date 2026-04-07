@@ -1,0 +1,1 @@
+﻿C:\IAR\Test\main.c -o C:\IAR\Test\Debug\Obj\ --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config "C:\Program Files\IAR Systems\Embedded Workbench 9.2\arm\inc\c\DLib_Config_Normal.h" -I C:\IAR\Test\CMSIS_GD\GD\GD32F30x\Include\ -Ol
