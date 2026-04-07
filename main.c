@@ -168,29 +168,40 @@ void draw_radar(uint32_t frame, uint16_t adc_val)
 {
     OLED_ClearBuffer();
 
-    /* active_r — максимальный радиус, растёт линейно с сигналом (1..RADAR_MAX_R) */
-    int active_r = 1 + (int)((uint32_t)adc_val * (RADAR_MAX_R - 1) / 4095);
+    /* active_r — радиус заполнения точками, растёт с сигналом (0..RADAR_MAX_R) */
+    int active_r = (int)((uint32_t)adc_val * RADAR_MAX_R / 4095);
 
-    /* Статичные кольца — только те, что вписываются в active_r */
+    /* Статичные кольца — всегда все 5 */
     const int radii[] = {15, 25, 35, 45, 55};
     for (int i = 0; i < 5; i++)
-        if (radii[i] <= active_r)
-            draw_semicircle(RADAR_CX, RADAR_CY, radii[i]);
+        draw_semicircle(RADAR_CX, RADAR_CY, radii[i]);
 
     /* Горизонтальная линия основания */
-    for (int x = RADAR_CX - active_r; x <= RADAR_CX + active_r; x++)
+    for (int x = RADAR_CX - RADAR_MAX_R; x <= RADAR_CX + RADAR_MAX_R; x++)
         OLED_Pixel(x, RADAR_CY);
 
     /* Вертикальная пунктирная линия */
-    for (int y = RADAR_CY - active_r; y <= RADAR_CY; y += 2)
+    for (int y = RADAR_CY - RADAR_MAX_R; y <= RADAR_CY; y += 2)
         OLED_Pixel(RADAR_CX, y);
 
+    /* Точки внутри active_r как индикатор сигнала */
+    if (active_r >= 1) {
+        for (int dy = -active_r; dy <= 0; dy += 4) {
+            for (int dx = -active_r; dx <= active_r; dx += 4) {
+                if (dx*dx + dy*dy <= active_r*active_r)
+                    OLED_Pixel(RADAR_CX + dx, RADAR_CY + dy);
+            }
+        }
+    }
+
     /* Расширяющееся кольцо — до active_r */
-    int ring_r = frame % (active_r + 1);
-    for (int d = -2; d <= 2; d++) {
-        int r = ring_r + d;
-        if (r >= 1 && r <= active_r)
-            draw_semicircle(RADAR_CX, RADAR_CY, r);
+    if (active_r >= 1) {
+        int ring_r = frame % (active_r + 1);
+        for (int d = -2; d <= 2; d++) {
+            int r = ring_r + d;
+            if (r >= 1 && r <= active_r)
+                draw_semicircle(RADAR_CX, RADAR_CY, r);
+        }
     }
 
     OLED_Update();
@@ -205,10 +216,11 @@ int main(void)
     OLED_Init();
 
     uint32_t frame = 0;
+    volatile uint8_t debug_signal = 0; /* поставь 1 в отладчике — симулирует полный сигнал */
 
     while (1)
     {
-        uint16_t adc_val = adc_read();
+        uint16_t adc_val = debug_signal ? 4095 : adc_read();
         draw_radar(frame, adc_val);
         frame++;
         delay_ms(16);
