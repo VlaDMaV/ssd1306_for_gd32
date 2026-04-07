@@ -16,6 +16,7 @@
 
 
 volatile uint32_t msTicks = 0;
+volatile uint8_t debug_signal = 0; /* поставь 1 в отладчике — симулирует полный сигнал */
 void SysTick_Handler(void) { msTicks++; }
 
 void delay_ms(uint32_t ms)
@@ -194,14 +195,12 @@ void draw_radar(uint32_t frame, uint16_t adc_val)
         }
     }
 
-    /* Расширяющееся кольцо — до active_r */
-    if (active_r >= 1) {
-        int ring_r = frame % (active_r + 1);
-        for (int d = -2; d <= 2; d++) {
-            int r = ring_r + d;
-            if (r >= 1 && r <= active_r)
-                draw_semicircle(RADAR_CX, RADAR_CY, r);
-        }
+    /* Расширяющееся кольцо — всегда до RADAR_MAX_R */
+    int ring_r = frame % (RADAR_MAX_R + 1);
+    for (int d = -2; d <= 2; d++) {
+        int r = ring_r + d;
+        if (r >= 1 && r <= RADAR_MAX_R)
+            draw_semicircle(RADAR_CX, RADAR_CY, r);
     }
 
     OLED_Update();
@@ -216,7 +215,6 @@ int main(void)
     OLED_Init();
 
     uint32_t frame = 0;
-    volatile uint8_t debug_signal = 0; /* поставь 1 в отладчике — симулирует полный сигнал */
 
     while (1)
     {
