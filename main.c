@@ -1,6 +1,5 @@
 // ================================================
-//   Эльбрус — Радар из STALCRAFT:X
-//   Волна повторяет окружность и идёт плавно вверх
+//   RADAR / SONAR display on SSD1306 (GD32F30x)
 // ================================================
 
 #include "gd32f30x.h"
@@ -9,6 +8,10 @@
 #include "gd32f30x_i2c.h"
 #include "system_gd32f30x.h"
 #include <stdlib.h>
+#include <string.h>
+#include <math.h>
+
+#define PI 3.14159265f
 
 #define OLED_ADDR 0x3C
 
@@ -108,51 +111,85 @@ void OLED_Init(void)
     OLED_Cmd(0xAF);
 }
 
-/* ===================== Эльбрус Радар ===================== */
-void draw_elbrus(uint32_t frame)
+/* ===================== RADAR DRAWING ===================== */
+
+#define RADAR_CX  64
+#define RADAR_CY  63
+#define RADAR_MAX_R 60
+
+/* Draw upper semicircle (Bresenham midpoint algorithm) */
+static void draw_semicircle(int cx, int cy, int r)
+{
+    int x = 0, y = r;
+    int d = 3 - 2 * r;
+    while (x <= y) {
+        /* Only plot pixels in the upper half (row <= cy) */
+        if (cy - y >= 0) {
+            OLED_Pixel(cx + x, cy - y);
+            OLED_Pixel(cx - x, cy - y);
+        }
+        if (cy - x >= 0) {
+            OLED_Pixel(cx + y, cy - x);
+            OLED_Pixel(cx - y, cy - x);
+        }
+        if (d < 0) d += 4 * x + 6;
+        else { d += 4 * (x - y) + 10; y--; }
+        x++;
+    }
+}
+
+/* Draw sweep line from center outward at given angle (radians, 0=up, +PI/2=right) */
+static void draw_sweep(int cx, int cy, float angle, int r)
+{
+    float dx =  sinf(angle);
+    float dy = -cosf(angle);
+    for (int i = 2; i <= r; i++) {
+        int px = cx + (int)(dx * i + 0.5f);
+        int py = cy + (int)(dy * i + 0.5f);
+        if (px >= 0 && px < 128 && py >= 0 && py < 64)
+            OLED_Pixel(px, py);
+    }
+}
+
+void draw_radar(uint32_t frame)
 {
     OLED_ClearBuffer();
 
-    // Надпись "ЭЛЬБРУС"
-    const char* title = "ELBRUS";
-    uint8_t tx = 35;
-    for (int i = 0; title[i]; i++) {
-        for (int j = 0; j < 5; j++) OLED_Pixel(tx + j, 3);
-        tx += 7;
+    /* Static concentric semicircles */
+    const int radii[] = {15, 25, 35, 45, 55};
+    for (int i = 0; i < 5; i++)
+        draw_semicircle(RADAR_CX, RADAR_CY, radii[i]);
+
+    /* Horizontal baseline */
+    for (int x = RADAR_CX - 56; x <= RADAR_CX + 56; x++)
+        OLED_Pixel(x, RADAR_CY);
+
+    /* Vertical center line (dashed) */
+    for (int y = RADAR_CY - 55; y <= RADAR_CY; y += 2)
+        OLED_Pixel(RADAR_CX, y);
+
+    /* Rotating sweep line: full 180В° back and forth */
+    /* frame cycles through 180 steps: -90В° to +90В° */
+    int step = frame % 360;
+    int angle_deg;
+    if (step < 180)
+        angle_deg = step - 90;       /* -90 -> +89 */
+    else
+        angle_deg = 270 - step;      /* +89 -> -90 (reverse) */
+
+    float angle_rad = angle_deg * PI / 180.0f;
+
+    /* Draw a fading trail (3 lines behind sweep) */
+    for (int t = 3; t >= 0; t--) {
+        int trail_deg = angle_deg - t * 5;
+        float trail_rad = trail_deg * PI / 180.0f;
+        int trail_r = RADAR_MAX_R - t * 4;
+        if (trail_r > 0)
+            draw_sweep(RADAR_CX, RADAR_CY, trail_rad, trail_r);
     }
 
-    // Концентрические полукруглые линии сетки
-    for (int r = 15; r <= 47; r += 7) {
-        for (int a = -88; a <= 88; a += 3) {
-            int x = 64 + (int)(r * a / 95);
-            int y = 55 - (int)(r * (95 - (a < 0 ? -a : a)) / 95);
-            OLED_Pixel(x, y);
-        }
-    }
-
-    // Яркая волна, которая повторяет форму окружности и идёт от центра вверх
-    uint32_t wave_phase = frame * 2;                    // скорость движения волны
-
-    for (int a = -82; a <= 82; a += 2) {
-        int radius = 42;
-        int x = 64 + (int)(radius * a / 92);
-
-        // Волна начинается от центра и поднимается вверх по дуге
-        int center_y = 52;
-        int wave_offset = (wave_phase % 140);
-        int y = center_y - (int)(wave_offset * 0.75) - (a * a / 220);
-
-        if (y >= 8 && y <= 52) {
-            OLED_Pixel(x, y);
-            OLED_Pixel(x - 1, y);      // толщина волны
-            OLED_Pixel(x + 1, y);
-        }
-    }
-
-    // Центральная вертикальная линия
-    for (int y = 54; y >= 12; y -= 2) {
-        OLED_Pixel(64, y);
-    }
+    /* Main sweep line вЂ” full length */
+    draw_sweep(RADAR_CX, RADAR_CY, angle_rad, RADAR_MAX_R);
 
     OLED_Update();
 }
@@ -168,9 +205,8 @@ int main(void)
 
     while (1)
     {
-        draw_elbrus(frame);
+        draw_radar(frame);
         frame++;
-
-        delay_ms(28);        // плавность ~35 fps
+        delay_ms(16);   /* ~60 steps/sec, full sweep ~3 sec */
     }
 }
