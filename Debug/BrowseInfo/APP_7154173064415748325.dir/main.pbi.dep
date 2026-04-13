@@ -38,6 +38,9 @@ D:\Test\Debug\BrowseInfo\APP_7154173064415748325.dir\main.pbi: \
   D:\Test\driver_GD\inc\gd32f30x_rcu.h \
   D:\Test\driver_GD\inc\gd32f30x_gpio.h \
   D:\Test\driver_GD\inc\gd32f30x_i2c.h \
+  D:\Test\driver_GD\inc\gd32f30x_adc.h \
   C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.2\arm\inc\c\stdlib.h \
   C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.2\arm\inc\c\ysizet.h \
-  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.2\arm\inc\c\DLib_Product_stdlib.h
+  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.2\arm\inc\c\DLib_Product_stdlib.h \
+  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.2\arm\inc\c\string.h \
+  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.2\arm\inc\c\DLib_Product_string.h
